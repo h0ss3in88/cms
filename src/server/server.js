@@ -9,7 +9,7 @@ app.use('/bower_components',express.static(path.resolve(__dirname,'../','../','b
 app.use('/client',express.static(path.resolve(__dirname,'../','client')));
 require('./configs/expressCfg')(app);
 require('./configs/mongodb')(mongoose,app);
-app.use(require('./utils/middlewares/db'));
+app.use(require('./utils/middleWares/db.js'));
 require('./configs/passportCfg')(app.get('db'));
 require('./routes')(app);
 module.exports =app;
