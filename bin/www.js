@@ -7,7 +7,7 @@ var http = require('http'),
     numCpus= os.cpus().length,
     cluster = require('cluster'),
     server;
-var app = require('../src/server/server');
+var app = require('../src/server/server.js');
 var db = app.get('db');
 Q.all([db.init()]).then(function (result) {
     app.set('db',result);
