@@ -3,6 +3,7 @@
  */
 var bodyParser = require('body-parser'),
     path= require('path'),
+    compression = require('compression'),
     methodOverride = require('method-override'),
     responseTime = require('response-time'),
     cookieParser = require('cookie-parser'),
@@ -13,6 +14,7 @@ module.exports = function (app) {
     app.use(logger('dev'));
     app.set('view engine','jade');
     app.set('views',path.resolve(__dirname,'../','views'));
+    app.use(compression());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended : true }));
     app.use(cookieParser('double secret Protection'));
