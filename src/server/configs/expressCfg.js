@@ -17,11 +17,13 @@ module.exports = function (app) {
     app.use(compression());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended : true }));
-    app.use(cookieParser('double secret Protection'));
+    app.use(cookieParser('doublesecretProtection'));
     app.use(session({
-        secret : 'AAAA-FFFB-CMNVD-JKQODA' ,
+        name : 'cmsAuthSession',
+        secret: 'supersecret',
+        saveUninitialized: true,
         resave: false,
-        saveUninitialized: false
+        cookie : { path : '/' , httpOnly : true , secure : false , expires: new Date(Date.now() + (30 * 86400 * 1000)) }
     }));
     app.use(passport.initialize());
     app.use(passport.session());

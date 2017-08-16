@@ -2,7 +2,6 @@
  * Created by Kaveh T a h e r i a n on 15/08/2017.
  */
 var passport = require('passport'),
-    path = require('path'),
     LocalStrategy = require('passport-local').Strategy,
     Auth = require('../processes/authentication.js'),
     assert = require('assert');
@@ -15,18 +14,21 @@ module.exports = function (db) {
         var _auth = new Auth(db);
         _auth.start({ email : email , password : password },function (err,result) {
             if(err){
-                done(null,false,err);
+                return done(null,false,err);
             }else{
-                done(null,result.user);
+                return done(null,result.user);
             }
         });
     }));
     passport.serializeUser(function (user, done) {
-        done(null,user.id);
+        console.log('serial user');
+        done(null,user._id);
     });
     passport.deserializeUser(function (id, done) {
-        db.User.findById(id,function (err, user) {
-            done(err,user);
+        db.User.findOne({_id : id },function (err, user) {
+            console.log('deserialize user');
+            if(err) { return done(err); }
+            done(null,user);
         });
     });
 };

@@ -6,6 +6,7 @@ var express = require('express'),
 module.exports = function () {
     _router.route('/')
         .get(function (req, res, next) {
+            console.log(req.session);
             res.render('home',{ user : req.user });
         });
     return _router;

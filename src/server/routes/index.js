@@ -6,4 +6,6 @@ module.exports = function (app) {
     app.use('/',require('./lib/login')());
     app.use('/',require('./lib/register')());
     app.use('/',require('./lib/logout')());
+    app.use('/',require('./lib/users')());
+    app.use('/',require('./lib/profile')());
 };
