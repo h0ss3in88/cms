@@ -8,6 +8,7 @@ var bodyParser = require('body-parser'),
     responseTime = require('response-time'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
+    RedisStore = require('connect-redis')(session),
     passport = require('passport'),
     logger = require('morgan');
 module.exports = function (app) {
@@ -23,6 +24,11 @@ module.exports = function (app) {
         secret: 'supersecret',
         saveUninitialized: true,
         resave: false,
+        store : new RedisStore({
+            host : process.env.OPENSHIFT_REDIS_DB_HOST ,
+            port : process.env.OPENSHIFT_REDIS_DB_PORT,
+            pass : 'ZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5'
+        }),
         cookie : { path : '/' , httpOnly : true , secure : false , expires: new Date(Date.now() + (30 * 86400 * 1000)) }
     }));
     app.use(passport.initialize());
