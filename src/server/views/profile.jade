@@ -2,7 +2,15 @@
    Created by Kaveh T a h e r i a n on 15/08/2017.
 extends ./shared/layout
 block contents
-        p =user.email
-        p #{moment(user.createdAt).format('MM/DD/YYYY')}
-        p #{moment(user.modifiedAt).format('MM/DD/YYYY')}
+    ul.nav.nav-pills.nav-stacked
+        li.active(role='presentation')
+            a(href='account/users/profile') General
+        li(rol="presentation")
+            a(href="account/users/profile/security") Security
+        li(rol="presentation")
+            a(href="account/users/profile/logs") Logs
+    .contailer
+        p=user.email
+        p creation #{moment(user.createdAt).format('MM/DD/YYYY')}
+        p modification #{moment(user.modifiedAt).format('MM/DD/YYYY')}
 
