@@ -21,14 +21,15 @@ module.exports = function (db) {
         });
     }));
     passport.serializeUser(function (user, done) {
-        console.log('serial user');
         done(null,user._id);
     });
     passport.deserializeUser(function (id, done) {
-        db.User.findOne({_id : id },function (err, user) {
-            console.log('deserialize user');
-            if(err) { return done(err); }
-            done(null,user);
-        });
+        db.User
+            .findOne({_id : id })
+            .select('_id email profile.first_name profile.last_name created_at modified_at')
+            .exec(function (err, user) {
+                if(err) { return done(err); }
+                done(null,user);
+            });
     });
 };
