@@ -10,8 +10,10 @@ var bodyParser = require('body-parser'),
     session = require('express-session'),
     RedisStore = require('connect-redis')(session),
     passport = require('passport'),
-    logger = require('morgan');
+    logger = require('morgan'),
+    moment = require('moment');
 module.exports = function (app) {
+    app.locals.moment = moment;
     app.use(logger('dev'));
     app.set('view engine','jade');
     app.set('views',path.resolve(__dirname,'../','views'));

@@ -17,9 +17,9 @@ block contents
             tbody
                 each item in users
                     tr
-                        td=item.profile.firstName
-                        td=item.profile.lastName
+                        td=item.profile.first_name
+                        td=item.profile.last_name
                         td=item.email
                         th=item.isActive
-                        th=item.createdAt
-                        th=item.modifiedAt
+                        th #{moment(item.createdAt).format('MM/DD/YYYY')}
+                        th #{moment(item.modifiedAt).format('MM/DD/YYYY')}

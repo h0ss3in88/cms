@@ -2,13 +2,13 @@
  * Created by Kaveh T a h e r i a n on 15/08/2017.
  */
 var express =require('express'),
+    auth = require('../../utils/middleWares/globalAuth.js'),
     _router = express.Router();
 
 module.exports = function () {
     _router.route('/account/users/profile')
         .get(function (req, res, next) {
-            console.log(req.session);
-            if(req.isAuthenticated()){
+            if(auth()){
                 res.render('profile',{ user : req.user });
             }
             else{

@@ -3,4 +3,7 @@
 extends ./shared/layout
 block contents
     - each item in user
-        span= item
+        p =item.email
+        p #{moment(item.createdAt).format('MM/DD/YYYY')}
+        p #{moment(item.modifiedAt).format('MM/DD/YYYY')}
+
