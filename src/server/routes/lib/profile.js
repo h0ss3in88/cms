@@ -9,7 +9,8 @@ module.exports = function () {
     _router.route('/account/users/profile')
         .get(function (req, res, next) {
             if(auth()){
-                res.render('profile',{ user : req.user });
+                console.log(req.user);
+                return res.render('profile',{ user : req.user });
             }
             else{
                 return res.json('not authorize');
