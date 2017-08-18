@@ -4,7 +4,8 @@
 var mongoose = require('mongoose'),
     crypto = require('crypto'),
     Schema = mongoose.Schema,
-    ObjectId = Schema.Types.ObjectId;
+    ObjectId = Schema.Types.ObjectId,
+    plugIn = require('../../utils/converterPlugin.js');
 
 var userSchema = new Schema({
     email : { type: String , unique : true},
@@ -52,4 +53,5 @@ userSchema.methods.hashPassword = function (pass) {
 userSchema.methods.checkPassword = function (plainPassword) {
     return this.hashed_password == this.hashPassword(plainPassword);
 };
+userSchema.plugin(plugIn);
 module.exports = mongoose.model('User',userSchema);

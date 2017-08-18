@@ -7,13 +7,15 @@ var express = require('express'),
 module.exports = function () {
     _router.route('/account/users')
         .get(function (req, res, next) {
-            console.log(req.session);
-            if(req.isAuthenticated()){
-                req.db.User.find({},function (err, docs) {
-                    if(err) { return next(err); }
-                    else{
-                        return res.render('users', { user : req.user ,users : docs});
-                    }
+            if(auth()){
+                req.db.User.find({})
+                    .sort({ 'profile.first_name' : 1 })
+                    .select('profile email is_active created_at modified_at')
+                    .exec(function (err, docs) {
+                       if(err) { return next(err); }
+                       else{
+                         return res.render('users', { user : req.user ,users : docs});
+                       }
                 });
             }else {
                 return res.status(401).send('not authorize');

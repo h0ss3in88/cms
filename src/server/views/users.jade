@@ -11,9 +11,15 @@ block contents
                     th first name
                     th last name
                     th email
+                    th activation
+                    th creation Date
+                    th modification Date
             tbody
                 each item in users
                     tr
-                        td=item.first_name
-                        td=item.last_name
+                        td=item.profile.firstName
+                        td=item.profile.lastName
                         td=item.email
+                        th=item.isActive
+                        th=item.createdAt
+                        th=item.modifiedAt

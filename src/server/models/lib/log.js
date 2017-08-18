@@ -3,7 +3,8 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    ObjectId = Schema.Types.ObjectId;
+    ObjectId = Schema.Types.ObjectId,
+    plugIn = require('../../utils/converterPlugin.js');
 var logSchema = new Schema({
     subject : { type : String },
     description : { type : String },
@@ -16,4 +17,5 @@ var logSchema = new Schema({
 logSchema.virtual('id').get(function () {
     return this._id.toHexString();
 });
+logSchema.plugin(plugIn);
 module.exports = mongoose.model('Log',logSchema);
