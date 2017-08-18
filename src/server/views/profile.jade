@@ -2,8 +2,7 @@
    Created by Kaveh T a h e r i a n on 15/08/2017.
 extends ./shared/layout
 block contents
-    - each item in user
-        p =item.email
-        p #{moment(item.createdAt).format('MM/DD/YYYY')}
-        p #{moment(item.modifiedAt).format('MM/DD/YYYY')}
+        p =user.email
+        p #{moment(user.createdAt).format('MM/DD/YYYY')}
+        p #{moment(user.modifiedAt).format('MM/DD/YYYY')}
 
