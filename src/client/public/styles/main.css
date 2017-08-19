@@ -27,3 +27,6 @@ body {
 .systemInfo{
     display: none;
 }
+footer > p {
+    text-align: center;
+}

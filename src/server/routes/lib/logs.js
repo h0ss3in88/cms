@@ -7,7 +7,7 @@ var express = require('express'),
 module.exports = function () {
     _router
         .route('/account/users/profile/logs/:id')
-        .use(auth)
+        .use(auth())
         .param('id',function (req, res, next, id) {
             req.db.Log
                 .find({ 'user_id' : id })
