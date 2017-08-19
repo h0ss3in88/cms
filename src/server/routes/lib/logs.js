@@ -5,18 +5,19 @@ var express = require('express'),
     _router = express.Router(),
     auth = require('../../utils/middleWares/globalAuth.js');
 module.exports = function () {
-    _router.use(auth());
-    _router.route('/account/users/profile/logs/:id');
-    _router.param('id',function (req, res, next, id) {
+    _router.use(auth())
+        .param('id',function (req, res, next, id) {
             req.db.Log
-                .find({ 'user_id' : id })
-                .select('subject description created_at modified_at')
-                .exec(function (err, docs) {
-                    if(err) return next(err);
-                    req.logs = docs;
-                    return next();
-                });
-        })
+            .find({ 'user_id' : id })
+            .select('subject description created_at modified_at')
+            .exec(function (err, docs) {
+                if(err) return next(err);
+                req.logs = docs;
+                return next();
+            });
+    });
+    _router
+        .route('/account/users/profile/logs/:id')
         .get(function (req, res, next) {
             if(req.logs){
                 return res.render('logs',{ logs : req.logs , user : req.user });

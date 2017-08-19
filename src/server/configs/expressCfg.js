@@ -27,8 +27,8 @@ module.exports = function (app) {
         saveUninitialized: true,
         resave: false,
         store : new RedisStore({
-            host : process.env.OPENSHIFT_REDIS_DB_HOST || process.env.LOCALHOST_REDIS_HOST,
-            port : process.env.OPENSHIFT_REDIS_DB_PORT || process.env.LOCALHOST_REDIS_HOST,
+            host : process.env.OPENSHIFT_REDIS_DB_HOST || process.env.NODE_REDIS_HOST,
+            port : process.env.OPENSHIFT_REDIS_DB_PORT || process.env.NODE_REDIS_PORT,
             pass : 'ZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5'
         }),
         cookie : { path : '/' , httpOnly : true , secure : false , expires: new Date(Date.now() + (30 * 86400 * 1000)) }
