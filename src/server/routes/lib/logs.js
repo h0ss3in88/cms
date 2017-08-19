@@ -6,8 +6,8 @@ var express = require('express'),
     auth = require('../../utils/middleWares/globalAuth.js');
 module.exports = function () {
     _router
+        .use(auth())
         .route('/account/users/profile/logs/:id')
-        .all(auth())
         .param('id',function (req, res, next, id) {
             req.db.Log
                 .find({ 'user_id' : id })
