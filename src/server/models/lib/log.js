@@ -8,8 +8,6 @@ var mongoose = require('mongoose'),
 var logSchema = new Schema({
     subject : { type : String },
     description : { type : String },
-    created_at : { type : Date , default: Date.now },
-    modified_at : { type : Date ,default : Date.now },
     user_id : { type : ObjectId , ref : 'User'},
     created_at : { type: Date , default: Date.now },
     modified_at : { type: Date , default: Date.now }

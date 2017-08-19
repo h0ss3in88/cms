@@ -1,0 +1,22 @@
+//
+   Created by Kaveh T a h e r i a n on 19/08/2017.
+
+extends ./shared/layout
+block contents
+    - if(logs.length < 0)
+      p there is no log
+    - else
+        table.table.table-striped.table-hover.table-condensed
+            thead
+                tr
+                    th subject
+                    th description
+                    th creation
+                    th modification
+            tbody
+                each item in logs
+                    tr
+                        td=item.subject
+                        td=item.description
+                        th #{moment(item.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
+                        th #{moment(item.modifiedAt).format('MMMM Do YYYY, h:mm:ss a')}

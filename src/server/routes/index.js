@@ -8,4 +8,5 @@ module.exports = function (app) {
     app.use('/',require('./lib/logout')());
     app.use('/',require('./lib/users')());
     app.use('/',require('./lib/profile')());
+    app.use('/',require('./lib/logs')());
 };

@@ -3,15 +3,14 @@
 extends ./shared/layout
 block contents
     .row
-        ul.nav.nav-pills.nav-stacked.col-md-4
+        ul.nav.nav-pills.nav-stacked.col-md-offset-2.col-md-2
             li.active(role='presentation')
                 a(href='account/users/profile') General
             li(rol="presentation")
                 a(href="account/users/profile/security") Security
             li(rol="presentation")
-                a(href="account/users/profile/logs") Logs
-        .contailer.col-md-8
+                a(href="account/users/profile/logs"+"/"+user.id) Logs
+        .contailer.col-md-4.col-md-offset-4
             p email #{user.email}
-            p creation #{moment(user.createdAt).format('MM/DD/YYYY')}
-            p modification #{moment(user.modifiedAt).format('MM/DD/YYYY')}
-
+            p creation #{moment(user.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
+            p modification #{moment(user.modifiedAt).format('MMMM Do YYYY, h:mm:ss a')}
