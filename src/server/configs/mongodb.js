@@ -18,9 +18,9 @@ module.exports = function (mongoose,app) {
             process.exit(0);
         });
     });
-    var connectionString = 'mongodb://k3:kaveh@ds137191.mlab.com:37191/offlineapp';
+    var connectionString = process.env.OpenShift_Mongo_Lab || process.env.LOCAL_MONGO;
     var Db = require('../utils/db');
     var options = {authMechanism: 'ScramSHA1'};
-    var db = new Db({uri: connectionString, options: {}});
+    var db = new Db({uri: connectionString, options: { useMongoClient: true }});
     app.set('db', db);
 };

@@ -3,5 +3,6 @@
  */
 module.exports = {
     User : require('./lib/user'),
-    Log : require('./lib/log')
+    Log : require('./lib/log'),
+    Post : require('./lib/post')
 };

@@ -1,0 +1,28 @@
+//
+   Created by Kaveh T a h e r i a n on 8/29/2017.
+extends ../shared/layout.jade
+block contents
+    .raw
+        .col-md-12.col-lg-12.col-sm-12.col-xs-12.well
+            form.form-horizontal(role="form",method="POST",action="/posts/add")
+                .form-group
+                    label.col-lg-2.control-label(for='postTitle') Title
+                    .col-lg-10
+                        input#postTitle.form-control(type='text', placeholder='Title',name="title")
+                .form-group
+                    label.col-lg-2.control-label(for='description') Description
+                    .col-lg-10
+                        input#description.form-control(type='text', placeholder='description is optional',name="description")
+                .form-group
+                    label.col-lg-2.control-label(for='body')
+                    .col-lg-10
+                        textarea#body.form-control(rows='3',name="body",placeholder="body can take place here")
+                .form-group
+                    label.col-lg-2.control-label(for='tags')
+                    .col-lg-10
+                        input#tags.form-control(name="tags",placeholder="tags should separated by  ,")
+                .form-group
+                    .col-md-10.col-md-offset-2.col-lg-10.col-lg-offset-2
+                        .pull-right
+                            button.btn.btn-primary(type='submit') Save
+

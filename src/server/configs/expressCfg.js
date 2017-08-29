@@ -24,7 +24,7 @@ module.exports = function (app) {
     app.use(session({
         name : 'cmsAuthSession',
         secret: 'supersecret',
-        saveUninitialized: true,
+        saveUninitialized: false,
         resave: false,
         store : new RedisStore({
             host : process.env.OPENSHIFT_REDIS_DB_HOST || process.env.NODE_REDIS_HOST,

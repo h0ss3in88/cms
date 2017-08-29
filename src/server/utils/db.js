@@ -14,6 +14,7 @@ var Db = function (args) {
             else{
                 self.User = models.User;
                 self.Log = models.Log;
+                self.Post = models.Post;
                 defer.resolve(self);
             }
         });
